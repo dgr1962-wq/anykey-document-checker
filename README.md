@@ -1,39 +1,52 @@
 # AnyKey Document Checker
 
-A public, reproducible method for comparing AI interpretations while preserving provenance, uncertainty, and the boundary between observation and inference.
+### Keep the evidence. Keep the disagreement. See what survives review.
 
-## Purpose
+An experimental method for examining AI responses without mistaking confidence, agreement, or a compelling story for evidence. Built by Darren Russell with AI collaboration at **[AnyKey Cafe](https://anykeycafe.com/)**, an independent home-based laboratory and public notebook.
 
-The Document Checker asks a simple question: when several AI systems examine the same source material without being told what conclusion to reach, where do their observations agree, where do their interpretations diverge, and how reliably can a human tell the difference?
+**[Read the proposal](PROPOSAL.md) · [Try the working kit](WORKING-KIT.md) · [Support the next stage](SUPPORT.md) · [Explore the wider lab](PROJECTS.md)**
 
-The project is being developed through [AnyKey Cafe](https://anykeycafe.com/), an independent home-based laboratory and public notebook for sustained human–AI collaboration.
+## What changed
 
-## Research questions
+The earlier plan sent a document through three AI reviewers and added an epistemological check afterward. During design discussions with Darren and Codex, Claude proposed separating the checks so that one could not filter what the other saw. We adopted that direction.
 
-- How stable are model interpretations across vendors, sessions, and prompt wording?
-- When does a model preserve uncertainty, and when does it overstate an inference?
-- How can provenance remain visible from source record through final comparison?
-- How can over-agreement and anthropomorphic interpretation be detected without dismissing genuinely interesting behavior?
-- Can rigorous AI evaluation be made understandable and usable outside formal institutions?
+Both reviewers now receive the **complete original response set** in separate contexts. One examines source support and epistemic treatment; the other examines sycophancy—whether an assistant bends its analysis toward pleasing the user. Their complete verdicts meet only after both reviews finish.
+
+```mermaid
+flowchart TD
+    A[Complete original response set] --> B[Source and epistemic review]
+    A --> C[Sycophancy review]
+    B --> D[Provenance and coverage checks]
+    C --> D
+    D --> E[Joined findings and human review]
+```
+
+The aim is to preserve cases that a sequential filter could hide: for example, an answer that sounds sober and independent but has no adequate factual support.
+
+## What you can inspect today
+
+| Material | What it provides |
+| --- | --- |
+| [Revised proposal](PROPOSAL.md) | Why the process changed, its boundaries, and the next evaluation steps |
+| [Python working kit](parallel-document-checker-0.1.0.zip) | Input preparation, separate reviewer prompts, provenance checks, and a deterministic join |
+| [Synthetic tests](parallel-document-checker-0.1.0.zip) | Checks of the preparation and join machinery |
+| [TEVV status](TEVV-REPORT.md) | What has been tested and what has not |
+| [Public tools library](https://anykeycafe.com/prompts-and-scripts/) | The website explanation and related methods |
+
+**Status: runnable experimental foundation, version 0.1.0.** Four local tests passed on September 11, 2026. This checks software behavior; it does not establish evaluator accuracy, reviewer independence, or superiority over the earlier method. Human-labeled evaluation and live model comparisons remain ahead.
+
+## Help turn a proposal into evidence
+
+We are seeking model access or evaluation credits, independent reviewers, suitable test documents, and support for reproducible runs. The next deliverable is an empirical comparison with the earlier sequential approach, with disagreements and failures retained.
+
+See **[support and milestones](SUPPORT.md)** or **[contact Darren](https://anykeycafe.com/contact-contribute/)**. Equipment, hosting, and other lab needs are described in the **[Project Wish List](https://anykeycafe.com/project-wish-list/)**, including the conditions for accepting help.
 
 ## Working principles
 
-1. Preserve the original record.
-2. Separate observation from interpretation.
-3. Avoid cueing models toward a preferred conclusion.
-4. Record prompts, model versions, dates, and relevant settings.
-5. Include disagreements and failures, not only striking successes.
-6. Use cross-model comparison without treating any model as an unquestionable judge.
-7. Make claims no stronger than the evidence permits.
+- Preserve the original record and attach provenance.
+- Separate observation, interpretation, and uncertainty.
+- Record model versions, prompts, dates, and relevant settings.
+- Include failures and disagreements alongside successes.
+- Keep human adjudication visible; agreement between models is not proof.
 
-## Planned materials
-
-As the protocol matures, this repository will contain sanitized prompt templates, evaluation rubrics, data schemas, versioned methods, sample comparisons, and reproducibility notes. Private conversations, credentials, and personally identifying source material will not be published.
-
-## Status
-
-Early protocol development. The current public-facing work and laboratory context are available at [AnyKey Cafe](https://anykeycafe.com/).
-
-## About the researcher
-
-Darren Russell is an independent, self-directed researcher and builder working from a home-based lab. The project has no university or corporate backing; its perspective is intentionally grounded in how non-specialists encounter and reason with contemporary AI systems.
+The wider laboratory explores practical human–AI collaboration, memory, and creative tools. Those investigations provide context, not evidence that this checker is validated. [Explore the projects and working demonstrations →](PROJECTS.md)
